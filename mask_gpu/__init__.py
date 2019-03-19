@@ -4,17 +4,17 @@ __version__ = "0.0.1"
 import subprocess as sp
 import os
 
-def mask_unused_gpus(allot=1, min_memory=1024):
+def mask_unused_gpus(expose=1, min_memory=1024):
   available_gpus = get_available_gpus(min_memory)
   print('---------------------')
-  if len(available_gpus) < allot:
+  if len(available_gpus) < expose:
     print('Found only {} usable GPU(s) in the system'.format( len(available_gpus) ))
-    print('Can\'t allot {} GPU(s)'.format(allot))
+    print('Can\'t expose {} GPU(s)'.format(expose))
     return
-  set_visible_devices = ','.join(map(str, available_gpus[:allot]))
-  print('Alloting {} GPU(s)...'.format(allot))
+  set_visible_devices = ','.join(map(str, available_gpus[:expose]))
+  print('Exposing {} GPU(s)...'.format(expose))
   os.environ["CUDA_VISIBLE_DEVICES"] = set_visible_devices
-  print('Visible GPUs: {} -> {}'.format(len(set_visible_devices), available_gpus[:allot]))
+  print('Visible GPUs: {} -> {}'.format(len(set_visible_devices), available_gpus[:expose]))
 
 def get_available_gpus(min_memory=1024):
   COMMAND = "nvidia-smi --query-gpu=memory.free --format=csv"
