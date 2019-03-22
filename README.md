@@ -18,26 +18,39 @@ mask-gpu --info
 # GPUs available: 6 -> [0, 1, 4, 5, 6, 7]
 ```
 
-Simply run `mask-gpu` to expose 1 GPU
+Simply run ``mask-gpu`` to expose 1 GPU (with a minimum of 1024MiB free memory)
 ```sh
-mask-gpu
-# Finding GPUs with a minimum of 1024MiB free memory...
-# GPUs available: 6 -> [0, 1, 4, 5, 6, 7]
-# ---------------------
-# Alloting 1 GPU(s)...
-# Visible GPUs: 1 -> [0]
+`mask-gpu`
+# Remember to wrap mask-gpu in ` symbol
+# Or else mask-gpu will print the command
+# and you will have to manually execute it
 ```
+
 ## Specifying Options
 
 By default `mask-gpu` seraches for GPUs with atleast 1024M free memory and allots 1 GPU
 ```sh
 mask-gpu --info --min_memory 1024
-# mask-gpu -s -m 1024                <--- Same as above
+# mask-gpu -i -m 1024                <--- Same as above
+# Info does not execute any commands
 
-mask-gpu --expose 1 --min_memory 1024
-# mask-gpu -e 3 -m 1024              <--- Same as above
+`mask-gpu --expose 1 --min_memory 1024`
+# `mask-gpu -e 3 -m 1024`            <--- Same as above
+# Remember to wrap mask-gpu in ` symbol
 ```
 You can specify your own options using the above as the template
+
+## Unmask all (Revert)
+
+To unmask all GPUs, i.e, to revert to what it was before using `mask-gpu`
+
+```sh
+`mask-gpu --unmask-all`
+# `mask-gpu -u`                      <--- Same as above
+# Remember to wrap mask-gpu in ` symbol
+```
+
+NOTE: This command will clear `CUDA_VISIBLE_DEVICES` and hence it will be erased when executing the above command
 
 ## Licence
 
