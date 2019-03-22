@@ -1,5 +1,5 @@
 # Mask GPU
-A simple tool to expose only specified number of GPUs with desired memory to Tensorflow
+A simple tool to expose only specified number of GPUs with desired memory to Tensorflow (and a few more apps, read further). This tool queries GPU free memory values using `nvidia-smi` and assigns `CUDA_VISIBLE_DEVICES` environment variable based on the specified memory and number of GPUs to expose, to expose specific GPUs. Apps such as `tensorflow-gpu` use this information and utilize only the GPUs that are exposed. If your app does not make use of `CUDA_VISIBLE_DEVICES`, then this is probably **not** what you would need.
 
 ## Dependencies
 - nvidia-smi
