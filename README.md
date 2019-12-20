@@ -30,12 +30,12 @@ Simply run \`mask-gpu\` to expose 1 GPU (with a minimum of 1024MiB free memory)
 
 By default `mask-gpu` seraches for GPUs with atleast 1024M free memory and allots 1 GPU
 ```sh
-mask-gpu --info --min_memory 1024
-# mask-gpu -i -m 1024                <--- Same as above
+mask-gpu --info --min-memory 1024
+# mask-gpu -i -m1024               <--- Same as above
 # Info does not execute any commands
 
-`mask-gpu --expose 1 --min_memory 1024`
-# `mask-gpu -e 3 -m 1024`            <--- Same as above
+`mask-gpu --expose 1 --min-memory 1024`
+# `mask-gpu -e3 -m1024`            <--- Same as above
 # Remember to wrap mask-gpu in ` symbol
 ```
 You can specify your own options using the above as the template
